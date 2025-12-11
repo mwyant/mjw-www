@@ -1199,3 +1199,36 @@ a {
 }
 
 
+
+/* Patch: replace video-as-background with proper <video> element styles */
+.section.wide.img {
+  /* fallback to a poster image instead of attempting to use an mp4 as a CSS background */
+  background-image: url('../images/bg-001-p-800.jpeg');
+  opacity: 1;
+  mix-blend-mode: normal;
+  padding-bottom: 0;
+  position: relative; /* to contain absolutely positioned video */
+  overflow: hidden;
+}
+
+/* Background video fills the section */
+.section.wide.img .bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Make sure content sits above the video */
+.section.wide.img .wrap,
+.section.wide.img .wrapper,
+.section.wide.img .title,
+.section.wide.img .wrap * {
+  position: relative;
+  z-index: 1;
+}
+
+/* End patch */
