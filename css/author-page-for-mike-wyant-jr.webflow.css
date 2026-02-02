@@ -1,4 +1,5 @@
 :root {
+  /* Core brand colors */
   --white: white;
   --black: black;
   --blue-violet: #6e2ed8;
@@ -7,6 +8,21 @@
   --deep-pink: #fc0a7e;
   --medium-violet-red: #b32e6e;
   --medium-slate-blue: #955df1;
+
+  /* New palette: deep cerulean & deep crimson focus */
+  --bg-base: #04040a;
+  --color-cerulean: #0b75d8;
+  --color-cerulean-soft: #2f8ce3;
+  --color-crimson: #c41b3c;
+  --color-crimson-soft: #e3475f;
+
+  /* Neutrals & text */
+  --text-main: #f4f4f7;
+  --text-muted: #a4a4b3;
+  --border-subtle: #26263a;
+
+  /* Accent, use sparingly */
+  --accent-amber: #ffb24a;
 }
 
 h1 {
@@ -88,8 +104,8 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 140px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000 100%);
+  height: 220px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(4, 4, 10, 0.95) 60%, #000 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -155,8 +171,8 @@ a {
 }
 
 .section.wide.purple {
-  background-color: #050010;
-  background-image: linear-gradient(135deg, #050010, #3a1a6b 40%, #fc0a7e 80%);
+  background-color: var(--bg-base);
+  background-image: linear-gradient(135deg, var(--bg-base), var(--color-cerulean) 40%, var(--color-crimson-soft) 80%);
   background-position: 0 0;
   background-size: cover;
   padding-top: 15vh;
@@ -280,7 +296,7 @@ a {
 }
 
 .body {
-  background-color: #000;
+  background-color: var(--bg-base);
   font-family: Gothic A1, sans-serif;
 }
 
@@ -348,7 +364,7 @@ a {
 .button {
   color: #fff;
   text-align: center;
-  background-color: #362c2c;
+  background-color: var(--color-cerulean);
   border-radius: 3px;
   margin-right: 0;
   padding: 20px 40px;
@@ -360,8 +376,8 @@ a {
 }
 
 .button:hover {
-  color: #6b6b6b;
-  background-color: #fff;
+  color: #fff;
+  background-color: var(--color-crimson);
 }
 
 .button.outline {
@@ -585,6 +601,89 @@ a {
   background-size: cover;
 }
 
+/* Books page layout */
+.books-hero {
+  background-color: var(--bg-base);
+  background-image: radial-gradient(circle at 0% 0%, rgba(11, 117, 216, 0.45), transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(196, 27, 60, 0.45), transparent 60%),
+    linear-gradient(135deg, #04040a, #050015 40%, #09001a 80%);
+  background-size: 140% 140%, 140% 140%, cover;
+}
+
+.books-section {
+  background-color: #050010;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+  width: 100%;
+  margin-top: 32px;
+}
+
+.book-card {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 16px;
+  border: 1px solid var(--border-subtle);
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+}
+
+.book-cover {
+  width: 110px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.book-body {
+  flex: 1;
+}
+
+.book-title {
+  margin: 0 0 8px;
+  font-size: 20px;
+  line-height: 1.3;
+  color: var(--text-main);
+}
+
+.book-copy {
+  margin: 0 0 10px;
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.book-meta {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.book-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.books-more-links {
+  margin-top: 40px;
+}
+
+@media screen and (max-width: 767px) {
+  .book-card {
+    flex-direction: column;
+  }
+
+  .book-cover {
+    width: 100%;
+    max-width: 220px;
+  }
+}
+
 .text-block {
   color: #fff;
 }
@@ -614,7 +713,7 @@ a {
 
 .nav-link:hover {
   color: #fff;
-  box-shadow: inset 0 -5px #fc0a7e;
+  box-shadow: inset 0 -5px var(--color-crimson-soft);
 }
 
 .nav-menu {
@@ -962,6 +1061,36 @@ a {
   backdrop-filter: blur(4px);
 }
 
+.medium-meta {
+  color: var(--text-muted);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.medium-title {
+  margin: 0 0 10px;
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+.medium-title a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+.medium-title a:hover {
+  color: var(--color-cerulean-soft);
+}
+
+.medium-excerpt {
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
 @media screen and (max-width: 991px) {
   h2 {
     font-size: 34px;
@@ -1280,6 +1409,7 @@ a {
   padding-bottom: 0;
   position: relative; /* to contain absolutely positioned video */
   overflow: hidden;
+  margin-top: -40px;
 }
 
 /* Background video fills the section */
@@ -1299,7 +1429,7 @@ a {
 .section.wide.img .title,
 .section.wide.img .wrap * {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 /* Soft fades at top and bottom of the video section */
@@ -1310,19 +1440,25 @@ a {
   left: 0;
   right: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
 
 #underconstruction::before {
   top: 0;
-  height: 140px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, #000 100%);
+  height: 220px;
+  background: linear-gradient(
+    to bottom,
+    #000 0%,
+    rgba(4, 4, 10, 0.95) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }
+
 
 #underconstruction::after {
   bottom: 0;
-  height: 140px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000 100%);
+  height: 200px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(4, 4, 10, 0.95) 60%, #000 100%);
 }
 
 /* End patch */
